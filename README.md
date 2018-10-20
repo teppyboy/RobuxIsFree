@@ -13,3 +13,6 @@ Features:
 Bugs: 
 - Only a stupid default windows form.
 - Not tested to build for android
+
+#Video
+*soon*
