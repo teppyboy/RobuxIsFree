@@ -14,5 +14,8 @@ Bugs:
 - Only a stupid default windows form.
 - Not tested to build for android
 
-#Video
-*soon*
+Releases:
+https://github.com/teppyboy/RobuxIsFree/releases
+
+# Video : 
+- *soon*
