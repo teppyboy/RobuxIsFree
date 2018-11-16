@@ -20,5 +20,5 @@ https://github.com/teppyboy/RobuxIsFree/releases
 # Video : 
 - *soon*
 
-# Updated to ver 1.0_rel2
+# Updated to ver 1.0_rel3
 - *maybe i will switch to materialui later*
