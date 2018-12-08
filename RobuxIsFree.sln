@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobuxIsFree", "RobuxIsFree\RobuxIsFree.csproj", "{4D0168AB-AA98-442C-946E-388B95B1B5A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobuxIsFree_Normal", "RobuxIsFree\RobuxIsFree_Normal.csproj", "{4D0168AB-AA98-442C-946E-388B95B1B5A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobuxIsFree_MaterialUI", "RobuxIsFree_MaterialUI\RobuxIsFree_MaterialUI.csproj", "{B0F79C89-7149-485C-8724-9CC77513F284}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4D0168AB-AA98-442C-946E-388B95B1B5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D0168AB-AA98-442C-946E-388B95B1B5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D0168AB-AA98-442C-946E-388B95B1B5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0F79C89-7149-485C-8724-9CC77513F284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0F79C89-7149-485C-8724-9CC77513F284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0F79C89-7149-485C-8724-9CC77513F284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0F79C89-7149-485C-8724-9CC77513F284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

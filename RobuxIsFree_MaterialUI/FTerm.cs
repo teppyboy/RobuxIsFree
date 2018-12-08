@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-// Normal FTerm
+// MaterialUI FTerm
 
 namespace RobuxIsFree
 {
@@ -29,12 +29,15 @@ namespace RobuxIsFree
 
         }
 
-
         private void FTerm_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Stop();
         }
 
+        private void FTerm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
 
         int a = 0;
 

